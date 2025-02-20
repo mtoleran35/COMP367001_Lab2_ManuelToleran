@@ -19,11 +19,11 @@ public class Lab2Controller {
 
         // Set the message based on the time of day
         if (hour >= 5 && hour < 12) {
-            message = "Good Morning, Manuel, Welcome to COMP367";
+            message = "Good Morning, Manuel Toleran, Welcome to COMP367";
         } else if (hour >= 12 && hour < 17) {
-            message = "Good Afternoon, Manuel, Welcome to COMP367";
+            message = "Good Afternoon, Manuel Toleran, Welcome to COMP367";
         } else if (hour >= 17 && hour < 21) {
-            message = "Good Evening, Manuel, Welcome to COMP367";
+            message = "Good Evening, Manuel Toleran, Welcome to COMP367";
         } else {
             message = "Good Night, Manuel, Welcome to COMP367";
         }
