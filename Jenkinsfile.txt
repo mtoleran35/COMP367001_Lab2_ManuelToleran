@@ -1,0 +1,58 @@
+pipeline {
+    agent any
+
+    stages {
+        // Checkout Stage
+        stage('Checkout') {
+            steps {
+                // Checkout from SCM (e.g., Git)
+                checkout scm
+            }
+        }
+
+        // Build Stage
+        stage('Build') {
+            steps {
+                // Run your build commands, e.g., Maven or Gradle
+                script {
+                    sh 'mvn clean install'
+                }
+            }
+        }
+
+        // Test Stage
+        stage('Test') {
+            steps {
+                // Run your tests here
+                script {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+        // Deploy Stage
+        stage('Deploy') {
+            steps {
+                // Deploy your app (this is an example for deployment)
+                echo 'Deploying application...'
+            }
+        }
+    }
+
+    post {
+        always {
+            // This block runs after the pipeline finishes, regardless of success or failure
+            echo 'Cleaning up resources...'
+        }
+
+        success {
+            // Runs if the pipeline is successful
+            echo 'Pipeline succeeded!'
+        }
+
+        failure {
+            // Runs if the pipeline fails
+            echo 'Pipeline failed.'
+        }
+    }
+}
