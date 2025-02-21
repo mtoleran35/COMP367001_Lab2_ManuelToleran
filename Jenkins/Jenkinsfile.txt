@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+        // Checkout Stage
+        stage('Checkout') {
+            steps {
+                // Checkout from SCM (e.g., Git)
+				git branch: 'main', url: 'https://github.com/mtoleran35/COMP367001_Lab2_ManuelToleran.git'  
+            }
+        }
+
+        // Build Stage
+        stage('Build') {
+            steps {
+                // Run your build commands, e.g., Maven or Gradle
+                script {
+                    sh 'mvn clean install'
+                }
+            }
+        }
+
+        // Test Stage
+        stage('Test') {
+            steps {
+                // Run your tests here
+                script {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+        // Deploy Stage
+        stage('Deploy') {
+            steps {
+                // Deploy your app (this is an example for deployment)
+                echo 'Deploying application...'
+            }
+        }
+    }
+
+}
