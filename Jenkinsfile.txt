@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout from SCM (e.g., Git)
-                checkout scm
+				git branch: 'main', url: 'https://github.com/mtoleran35/COMP367001_Lab2_ManuelToleran.git'  
             }
         }
 
@@ -39,20 +39,4 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            // This block runs after the pipeline finishes, regardless of success or failure
-            echo 'Cleaning up resources...'
-        }
-
-        success {
-            // Runs if the pipeline is successful
-            echo 'Pipeline succeeded!'
-        }
-
-        failure {
-            // Runs if the pipeline fails
-            echo 'Pipeline failed.'
-        }
-    }
 }
