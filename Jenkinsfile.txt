@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+	tools {
+        maven 'Maven 3'  
+    }
+	
+    stages {
+        // Checkout Stage
+        stage('Checkout') {
+            steps {
+                // Checkout from SCM (e.g., Git)
+				checkout scm 
+            }
+        }
+
+        // Build Stage
+        stage('Build') {
+            steps {
+                // Run your build commands, e.g., Maven or Gradle
+                script {
+                    sh 'mvn clean install'
+                }
+            }
+        }
+
+        // Test Stage
+        stage('Test') {
+            steps {
+                // Run your tests here
+                script {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+        // Deploy Stage
+        stage('Deploy') {
+            steps {
+                // Deploy your app (this is an example for deployment)
+                echo 'Deploying application...'
+            }
+        }
+    }
+
+}
