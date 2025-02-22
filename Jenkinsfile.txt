@@ -13,6 +13,9 @@ pipeline {
         // Build Stage
         stage('Build') {
             steps {
+				script {
+                    sh 'make'
+                }
                 echo 'Building application...'
             }
         }
@@ -29,6 +32,13 @@ pipeline {
             steps {
                 echo 'Deploying application...'
             }
+        }
+    }
+	
+	post {
+        success {
+            // Archive files after successful build
+            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
         }
     }
 
