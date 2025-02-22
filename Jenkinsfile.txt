@@ -24,7 +24,7 @@ pipeline {
         stage('Test') {
             steps {
 				script{
-					sh 'mvn test'
+					sh 'mvn -f ManuelToleran_COMP367001_Lab2_Q2/pom.xml test'
 				}
                 echo 'Testing application...'
             }
