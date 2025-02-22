@@ -14,7 +14,7 @@ pipeline {
         stage('Build') {
             steps {
 				script {
-                    sh 'make'
+                    sh 'mvn clean install'
                 }
                 echo 'Building application...'
             }
@@ -23,6 +23,9 @@ pipeline {
         // Test Stage
         stage('Test') {
             steps {
+				script{
+					sh 'mvn test'
+				}
                 echo 'Testing application...'
             }
         }
@@ -39,6 +42,11 @@ pipeline {
         success {
             // Archive files after successful build
             archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
+			echo 'Build completed successfully!'
+        }
+		failure {
+            // Actions to take if the build fails
+            echo 'Build failed.'
         }
     }
 
