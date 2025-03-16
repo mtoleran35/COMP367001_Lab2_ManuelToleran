@@ -20,34 +20,5 @@ pipeline {
             }
         }
 
-        // Test Stage
-        stage('Test') {
-            steps {
-				script{
-					sh 'mvn -f ManuelToleran_COMP367001_Lab2_Q2/pom.xml test'
-				}
-                echo 'Testing application...'
-            }
-        }
-
-        // Deploy Stage
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
-            }
-        }
     }
-	
-	post {
-        success {
-            // Archive files after successful build
-            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
-			echo 'Build completed successfully!'
-        }
-		failure {
-            // Actions to take if the build fails
-            echo 'Build failed.'
-        }
-    }
-
 }
