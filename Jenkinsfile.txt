@@ -28,7 +28,7 @@ pipeline {
         stage('Docker Login') {
             steps {
 				script {
-                    bat 'docker login -u mtoleran -p ${DOCKERHUB_PWD}'
+                    sh 'docker login -u mtoleran -p ${DOCKERHUB_PWD}'
                 }
                 echo 'Logging in to Docker...'
             }
@@ -38,7 +38,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
 				script {
-                    bat 'docker build -t mtoleran/manueltoleran-lab3 .'
+                    sh 'docker build -t mtoleran/manueltoleran-lab3 .'
                 }
                 echo 'Building docker image...'
             }
