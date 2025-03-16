@@ -10,13 +10,23 @@ pipeline {
             }
         }
 
-        // Build Stage
-        stage('Build') {
+        // Build Maven Stage
+        stage('Build Maven') {
             steps {
 				script {
                     sh 'mvn -f ManuelToleran_COMP367001_Lab2_Q2/pom.xml install'
                 }
                 echo 'Building application...'
+            }
+        }
+		
+		// Build Docker Image Stage
+        stage('Build Docker Image') {
+            steps {
+				script {
+                    sh 'docker build -t mtoleran/manueltoleran-lab3 .'
+                }
+                echo 'Building docker image...'
             }
         }
 
