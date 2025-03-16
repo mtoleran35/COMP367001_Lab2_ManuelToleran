@@ -18,7 +18,7 @@ pipeline {
         stage('Build Maven') {
             steps {
 				script {
-                    sh 'mvn -f ManuelToleran_COMP367001_Lab2_Q2/pom.xml install'
+                    sh 'mvn -f ManuelToleran_COMP367001_Lab2_Q2/pom.xml clean install'
                 }
                 echo 'Building application...'
             }
