@@ -1,6 +1,10 @@
 pipeline {
     agent any
 	
+	environment{
+		DOCKERHUB_PWD = credentials('CredentialID_DockerHubPWD')
+	}
+	
 	//Stages
     stages {
         // Checkout Stage
@@ -17,6 +21,16 @@ pipeline {
                     sh 'mvn -f ManuelToleran_COMP367001_Lab2_Q2/pom.xml install'
                 }
                 echo 'Building application...'
+            }
+        }
+		
+		// Login Docker
+        stage('Build Docker Image') {
+            steps {
+				script {
+                    sh 'docker login -u mtoleran -p ${DOCKERHUB_PWD}'
+                }
+                echo 'Logging in to Docker...'
             }
         }
 		
