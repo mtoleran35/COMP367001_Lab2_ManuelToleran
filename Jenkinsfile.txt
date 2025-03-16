@@ -25,7 +25,7 @@ pipeline {
         }
 		
 		// Login Docker
-        stage('Build Docker Image') {
+        stage('Docker Login') {
             steps {
 				script {
                     sh 'docker login -u mtoleran -p ${DOCKERHUB_PWD}'
