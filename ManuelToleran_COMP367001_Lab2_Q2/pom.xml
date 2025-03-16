@@ -59,6 +59,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>manueltoleran-lab3.jar</finalName>
+		<finalName>manueltoleran-lab3</finalName>
 	</build>
 </project>
