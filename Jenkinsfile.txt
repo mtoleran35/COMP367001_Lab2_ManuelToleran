@@ -27,7 +27,7 @@ pipeline {
             }
         }
 		
-		// Login Docker
+		// Login Docker Stage
         stage('Docker Login') {
             steps {
 				script {
@@ -44,6 +44,16 @@ pipeline {
                     sh 'docker build -f ManuelToleran_COMP367001_Lab2_Q2/Dockerfile -t mtoleran/manueltoleran-lab3 .'
                 }
                 echo 'Building docker image...'
+            }
+        }
+		
+		// Push Docker Image Stage
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+				script {
+                    sh 'docker push mtoleran/manueltoleran-lab3'
+                }
+                echo 'Pushing docker image...'
             }
         }
 
