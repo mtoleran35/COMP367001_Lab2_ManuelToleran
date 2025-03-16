@@ -2,6 +2,7 @@ pipeline {
     agent any
 	
 	environment{
+		PATH = "C:/Program Files/Docker/Docker:$PATH"
 		DOCKERHUB_PWD = credentials('CredentialID_DockerHubPWD')
 	}
 	
